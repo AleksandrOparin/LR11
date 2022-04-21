@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<section class="py-5 text-center container fst-italic"> 
+  <div class="row py-lg-5">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <h1 class="fw-light fs-1"> Главная страница </h1>
+      <div class="col-12 fs-2">
+
+        <table class="table text-center">
+          <thead>
+            <tr>
+              <th> Число </th>
+              <th> Результат </th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @palindromes.each do |palindrome| %>
+              <tr>
+                <td valign="middle" class="fs-5"><%= palindrome.number %></td>
+                <td><%= palindrome.result %></td>
+                <td valign="middle" class="fs-5"><%= link_to 'Посмотреть', palindrome %></td>
+                <td valign="middle" class="fs-5"><%= link_to 'Удалить', palindrome, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <span class="fs-3"> <%= link_to "Добавить новое значение", new_palindrome_path %> </span>
+      </div>
+    </div>
+  </div>
+</section>

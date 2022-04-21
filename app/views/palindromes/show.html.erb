@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<section class="py-5 text-center container fst-italic"> 
+  <div class="row py-lg-5">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <h1 class="fw-light fs-1"> Результат </h1>
+      <p class="lead text-muted"> Числа, сами являющиеся палиндромами и при возведении в квадрат, образующие палиндромы (до <%= @palindrome.number %>).</p>
+      <div class="col-12 fs-3">
+
+        <table class="table text-center">
+          <thead>
+            <tr>
+              <th> Число </th>
+              <th> Квадрат числа </th>
+            </tr>
+          </thead>
+          <tbody>
+            <% if (@palindrome.result) %>
+              <% JSON.parse(@palindrome.result)['values'].each do |element| %>
+                <tr>
+                  <td class="fs-4"> <%= element['result'] %> </td>
+                  <td class="fs-4"> <%= element['square'] %> </td>
+                </tr>
+              <% end %>
+            <% end %>
+          </tbody>
+        </table>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text fs-4"> Количество чисел: </span>
+          </div>
+          <input type="text" class="form-control fs-4" id="Result" placeholder="Количество чисел" value="<%= JSON.parse(@palindrome.result)['length'] if @palindrome.result %>" readonly>
+        </div>
+        <span class="fs-3"> <%= link_to "Назад (к главной странице)", palindromes_path %> </span>
+      </div>
+    </div>
+  </div>
+</section>
